@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS directory metadata
+**/.DS_Store
+
+
+# Build outputs
+/bin/
+/build/
+**/build/
+**/*.o
+**/*.a
+**/*.so
+**/*.dylib
+
+# Go
+**/*.test
+**/*.out
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local data (recommended to keep out of repo)
+/data/

@@ -1,0 +1,7 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+requests==2.32.3
+transformers==4.48.0
+pydantic==2.*   # 具体小版本你装完 freeze 出来最稳
+# tokenizers 通常由 transformers 带进来；你要更可复现也可以 pin：
+# tokenizers==0.21.0

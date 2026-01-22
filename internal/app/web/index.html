@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Local AI Core</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+<!-- ===== 常驻 Neural Field 背景 ===== -->
+<canvas id="brain" class="bg-canvas"></canvas>
+
+<!-- ===== BOOT SCREEN ===== -->
+<div id="boot" class="boot">
+  <!-- Boot 专用特效层（裂隙 / 扫描 / 能量脉冲） -->
+  <canvas id="bootfx" class="bootfx"></canvas>
+
+  <div class="boot-center">
+    <div class="core-text">INITIALIZING AI CORE</div>
+    <div class="boot-log" id="boot-log"></div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div class="app hidden" id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="title">LOCAL·AI</span>
+      <span class="sub">Neural Console</span>
+    </div>
+    <div class="status" id="status">
+      •‿•
+      <canvas id="thinking-wave" width="80" height="18"></canvas>
+    </div>
+  </header>
+
+  <main class="panel">
+    <div id="log" class="log"></div>
+
+    <div class="composer" id="composer">
+      <textarea id="input" rows="3" placeholder="› Enter message or command…"></textarea>
+      <button id="send">EXECUTE</button>
+    </div>
+  </main>
+
+  <footer class="sysbar">
+    <div class="sys-item">
+      <span class="led on"></span>
+      <span class="label">STREAM</span>
+      <span class="value">SSE</span>
+    </div>
+    <div class="sys-item">
+      <span class="led" id="core-led"></span>
+      <span class="label">CORE</span>
+      <span class="value" id="core-status">OFFLINE</span>
+    </div>
+    <div class="sys-item clickable" id="facts-btn" title="Pending facts">
+      <span class="led" id="facts-led"></span>
+      <span class="label">FACTS</span>
+      <span class="value" id="facts-count">0</span>
+    </div>
+
+    <div class="sys-item clickable" id="debug-btn" title="Show context injection debug">
+      <span class="led" id="debug-led"></span>
+      <span class="label">DEBUG</span>
+      <span class="value">CTX</span>
+    </div>
+  </footer>
+
+  <div class="facts-overlay hidden" id="facts-overlay">
+    <div class="facts-panel">
+      <div class="facts-head">
+        <div class="facts-title">FACTS CENTER</div>
+        <div class="facts-tabs" id="facts-tabs">
+          <button class="facts-tab active" data-tab="pending">PENDING</button>
+          <button class="facts-tab" data-tab="conflicts">CONFLICTS</button>
+          <button class="facts-tab" data-tab="active">ACTIVE</button>
+          <button class="facts-tab" data-tab="history">HISTORY</button>
+        </div>
+        <button class="facts-close" id="facts-close">✕</button>
+      </div>
+
+      <div class="facts-body">
+        <div class="facts-pane" id="facts-pane-pending"></div>
+        <div class="facts-pane hidden" id="facts-pane-conflicts"></div>
+        <div class="facts-pane hidden" id="facts-pane-active"></div>
+        <div class="facts-pane hidden" id="facts-pane-history"></div>
+      </div>
+
+      <div class="facts-foot">
+        <div class="facts-tip">
+          PENDING: REMEMBER = 写入长期事实库（等价 /remember）；REJECT = 本次忽略。
+          CONFLICTS: KEEP 保留当前；REPLACE 用新事实替换（旧版本会归档）。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts-overlay hidden" id="debug-overlay">
+    <div class="facts-panel debug-panel">
+      <div class="facts-head">
+        <div class="facts-title">CONTEXT DEBUG</div>
+        <button class="facts-close" id="debug-close">✕</button>
+      </div>
+      <div class="debug-body" id="debug-body"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
